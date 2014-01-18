@@ -7,8 +7,7 @@
 
 namespace bc\cmf;
 
-
-use bc\Config\ConfigManager;
+use bc\config\ConfigManager;
 use Slim\Extras\Views\Twig;
 use Slim\Slim;
 
