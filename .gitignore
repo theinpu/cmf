@@ -1,0 +1,5 @@
+.idea
+vendor
+*.lock
+config/*.php
+config/*.json
