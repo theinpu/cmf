@@ -28,7 +28,7 @@ class Application
         $settings = array_merge($settings, $cfg->getAll());
 
         if (isset($settings['twig'])) {
-            Twig::$twigOptions = array($settings['twig']);
+            Twig::$twigOptions = $settings['twig'];
         }
         Twig::$twigExtensions = array(
             'Twig_Extensions_Slim',
