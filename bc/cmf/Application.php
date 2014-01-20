@@ -19,10 +19,11 @@ class Application
      */
     private $slim;
 
-    public function __construct($settings = array())
-    {
+    public function __construct($settings = array()) {
 
-        $cfg = ConfigManager::get("config/app.php");
+        $cfg = isset($settings['config_file'])
+            ? ConfigManager::get($settings['config_file'])
+            : ConfigManager::get("config/app");
 
         $settings = array_merge($settings, $cfg->getAll());
 
@@ -41,21 +42,18 @@ class Application
         $this->initRoutes();
     }
 
-    public function run()
-    {
+    public function run() {
         $this->slim->run();
     }
 
-    protected function initRoutes()
-    {
+    protected function initRoutes() {
 
     }
 
     /**
      * @return \Slim\Slim
      */
-    public final function getSlim()
-    {
+    public final function getSlim() {
         return $this->slim;
     }
 
@@ -64,8 +62,7 @@ class Application
      * @param Command $command
      * @return \Slim\Route
      */
-    protected function addGetCommand($pattern, Command $command)
-    {
+    protected function addGetCommand($pattern, Command $command) {
         $command->setApp($this);
 
         return $this->slim->get($pattern, $command->getCallback());
@@ -76,8 +73,7 @@ class Application
      * @param Command $command
      * @return \Slim\Route
      */
-    protected function addPostCommand($pattern, Command $command)
-    {
+    protected function addPostCommand($pattern, Command $command) {
         $command->setApp($this);
         return $this->slim->post($pattern, $command->getCallback());
     }
