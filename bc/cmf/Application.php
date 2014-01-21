@@ -11,7 +11,7 @@ use bc\config\ConfigManager;
 use Slim\Extras\Views\Twig;
 use Slim\Slim;
 
-class Application
+abstract class Application
 {
 
     /**
@@ -46,14 +46,12 @@ class Application
         $this->slim->run();
     }
 
-    protected function initRoutes() {
-
-    }
+    protected abstract function initRoutes();
 
     /**
      * @return \Slim\Slim
      */
-    public final function getSlim() {
+    public function getSlim() {
         return $this->slim;
     }
 
@@ -64,7 +62,6 @@ class Application
      */
     protected function addGetCommand($pattern, Command $command) {
         $command->setApp($this);
-
         return $this->slim->get($pattern, $command->getCallback());
     }
 

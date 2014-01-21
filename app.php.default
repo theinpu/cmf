@@ -2,4 +2,5 @@
 
 return array(
     'develop' => false,
+    'templates.path' => 'templates'
 );
