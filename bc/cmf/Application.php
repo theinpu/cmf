@@ -60,7 +60,7 @@ abstract class Application
      * @param Command $command
      * @return \Slim\Route
      */
-    protected function addGetCommand($pattern, Command $command) {
+    public function addGetCommand($pattern, Command $command) {
         $command->setApp($this);
         return $this->slim->get($pattern, $command->getCallback());
     }
@@ -70,8 +70,12 @@ abstract class Application
      * @param Command $command
      * @return \Slim\Route
      */
-    protected function addPostCommand($pattern, Command $command) {
+    public function addPostCommand($pattern, Command $command) {
         $command->setApp($this);
         return $this->slim->post($pattern, $command->getCallback());
+    }
+
+    public function addRouteGroup(RouteGroup $group) {
+        $group->initRoutes();
     }
 }
