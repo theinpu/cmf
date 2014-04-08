@@ -18,12 +18,16 @@ abstract class RouteGroup {
         $this->app = $app;
     }
 
-    /**
-     * @return Application
-     */
-    protected function getApp() {
-        return $this->app;
+    protected function addRoute($pattern, Command $command, $methods) {
+        if(in_array('get', $methods)) {
+            $this->app->addGetCommand($pattern, $command);
+        }
+        if(in_array('post', $methods)) {
+            $this->app->addPostCommand($pattern, $command);
+        }
     }
+
+    protected abstract function getBaseUrl();
 
     public abstract function initRoutes();
 }
