@@ -20,10 +20,10 @@ abstract class RouteGroup {
 
     protected function addRoute($pattern, Command $command, $methods) {
         if(in_array('get', $methods)) {
-            $this->app->addGetCommand($pattern, $command);
+            $this->app->addGetCommand($this->getBaseUrl().$pattern, $command);
         }
         if(in_array('post', $methods)) {
-            $this->app->addPostCommand($pattern, $command);
+            $this->app->addPostCommand($this->getBaseUrl().$pattern, $command);
         }
     }
 

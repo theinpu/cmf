@@ -2,7 +2,7 @@
     "name": "bc/cmf",
     "description": "simple cmf (application, controller, command, etc.)",
     "type": "library",
-    "version": "0.1.6.1",
+    "version": "0.1.6.2",
     "homepage": "https://github.com/theinpu/cmf",
     "license": "MIT",
     "authors": [
