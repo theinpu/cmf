@@ -30,7 +30,7 @@ abstract class Controller
         $this->app->getSlim()->view()->appendData($data);
     }
 
-    protected function getDate($key) {
+    protected function getData($key) {
         return $this->app->getSlim()->view()->getData($key);
     }
 
