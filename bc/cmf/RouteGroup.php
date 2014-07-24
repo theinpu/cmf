@@ -27,6 +27,10 @@ abstract class RouteGroup {
         }
     }
 
+    protected final function AddRouteGroup(RouteGroup $group) {
+        $group->initRoutes();
+    }
+
     protected abstract function getBaseUrl();
 
     public abstract function initRoutes();
