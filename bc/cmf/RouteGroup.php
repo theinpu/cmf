@@ -31,6 +31,13 @@ abstract class RouteGroup {
         $group->initRoutes();
     }
 
+    /**
+     * @return Application
+     */
+    protected final function GetApp() {
+        return $this->app;
+    }
+
     protected abstract function getBaseUrl();
 
     public abstract function initRoutes();
