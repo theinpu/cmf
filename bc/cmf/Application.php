@@ -75,6 +75,26 @@ abstract class Application
         return $this->slim->post($pattern, $command->getCallback());
     }
 
+    /**
+     * @param $pattern
+     * @param Command $command
+     * @return \Slim\Route
+     */
+    public function addPutCommand($pattern, Command $command) {
+        $command->setApp($this);
+        return $this->getSlim()->put($pattern, $command->getCallback());
+    }
+
+    /**
+     * @param $pattern
+     * @param Command $command
+     * @return \Slim\Route
+     */
+    public function addDeleteCommand($pattern, Command $command) {
+        $command->setApp($this);
+        return $this->getSlim()->delete($pattern, $command->getCallback());
+    }
+
     public function addRouteGroup(RouteGroup $group) {
         $group->initRoutes();
     }

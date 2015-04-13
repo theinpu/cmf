@@ -25,6 +25,12 @@ abstract class RouteGroup {
         if(in_array('post', $methods)) {
             $this->app->addPostCommand($this->getBaseUrl().$pattern, $command);
         }
+        if(in_array('put', $methods)) {
+            $this->app->addPutCommand($this->getBaseUrl().$pattern, $command);
+        }
+        if(in_array('delete', $methods)) {
+            $this->app->addDeleteCommand($this->getBaseUrl().$pattern, $command);
+        }
     }
 
     protected abstract function getBaseUrl();
